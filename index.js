@@ -15,12 +15,12 @@ const i = x => Promise.resolve(`CD->F (${x})`);
 const C = A.flatMap(f);
 
 const D = B.flatMap(g)
-  .flatMap(gg =>
+  .flatMap(d =>
     new Promise(resolve => {
       console.log('computing D...');
       setTimeout(() => {
         console.log('computing D... DONE');
-        resolve(gg);
+        resolve(d);
       }, 2000);
     }))
   .publishReplay()
