@@ -14,15 +14,17 @@ const i = x => Promise.resolve(`CD->F (${x})`);
 
 const C = A.flatMap(f);
 
-const D = B
-  .flatMap(g)
-  .flatMap(gg => new Promise(resolve => {
-    console.log('computing D...');
-    setTimeout(() => {
-      console.log('computing D... DONE');
-      resolve(gg);
-    }, 2000);
-  })).publishReplay().refCount();
+const D = B.flatMap(g)
+  .flatMap(gg =>
+    new Promise(resolve => {
+      console.log('computing D...');
+      setTimeout(() => {
+        console.log('computing D... DONE');
+        resolve(gg);
+      }, 2000);
+    }))
+  .publishReplay()
+  .refCount();
 
 const CD = Rx.Observable.zip(C, D, (c, d) => [c, d].join('+'));
 
