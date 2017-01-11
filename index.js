@@ -1,8 +1,8 @@
 const Rx = require('rxjs');
 
-const A = new Rx.Subject();
+const A = Rx.Observable.of('hi');
 
-const B = new Rx.Subject();
+const B = Rx.Observable.of('ho');
 
 const f = x => Promise.resolve(`A->C (${x})`);
 
@@ -33,7 +33,9 @@ const F = CD.flatMap(i).do(() => { console.log('pass F'); }); // dead code, won'
 
 const ED = Rx.Observable.zip(E, D, (e, d) => [e, d].join('+'));
 
-ED.subscribe(x => { console.log(x); });
 
-A.next('hi');
-B.next('ho');
+console.log('wait...');
+setTimeout(() => {
+  console.log('go!');
+  ED.subscribe(x => { console.log(x); });
+}, 1000);
