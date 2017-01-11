@@ -9,7 +9,7 @@ const ed = require('../providers/ed');
 const selectorA = require('../selectors/a');
 const selectorB = require('../selectors/b');
 
-// This should be created automatically
+// If possible, this should be created automatically
 module.exports = env => {
   // Units
   const A = () => Promise.resolve(selectorA(env));
