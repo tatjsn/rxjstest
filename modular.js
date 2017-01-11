@@ -1,9 +1,9 @@
-const constructObservers = require('./observers/construct');
+const constructObservables = require('./observables/construct');
 
-const observers = constructObservers({ a: 'hi', b: 'ho' });
+const observables = constructObservables({ a: 'hi', b: 'ho' });
 
 console.log('wait...');
 setTimeout(() => {
   console.log('go!');
-  observers.ED().then(x => { console.log('returns', x); });
+  observables.ED().then(x => { console.log('returns', x); });
 }, 1000);
