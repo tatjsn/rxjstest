@@ -5,11 +5,8 @@ const A = Rx.Observable.of('hi');
 const B = Rx.Observable.of('ho');
 
 const f = x => Promise.resolve(`A->C (${x})`);
-
 const g = x => Promise.resolve(`B->D (${x})`);
-
 const h = x => Promise.resolve(`CD->E (${x})`);
-
 const i = x => Promise.resolve(`CD->F (${x})`);
 
 const C = A.flatMap(f);
