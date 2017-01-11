@@ -6,11 +6,14 @@ const cd = require('../providers/cd');
 const e = require('../providers/e');
 const ed = require('../providers/ed');
 
+const selectorA = require('../selectors/a');
+const selectorB = require('../selectors/b');
+
 // This should be created automatically
 module.exports = env => {
   // Units
-  const A = () => Promise.resolve(env.a);
-  const B = () => Promise.resolve(env.b);
+  const A = () => Promise.resolve(selectorA(env));
+  const B = () => Promise.resolve(selectorB(env));
 
   // Kinda observables
   const C = lift(c, A);
