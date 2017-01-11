@@ -8,5 +8,6 @@ Attempt to resolve graph of async functions, lazily:
 `npm start`
 
 ## Next
-* next 1
-* next 2
+* Introduce `product` and `sum` of (so-called) observables
+* ?
+
